@@ -75,6 +75,13 @@ public class GameController {
         alert.setContentText("Player " + winner + " won!");
         Optional<ButtonType> result = alert.showAndWait();
     }
+    @FXML
+    void showTieDialog(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tie!");
+        alert.setContentText("Reset and try again!");
+        Optional<ButtonType> result = alert.showAndWait();
+    }
 
 
     @FXML
@@ -123,6 +130,7 @@ public class GameController {
         buttons.forEach(this::resetButton);
         gameEnded=false;
         playerTurnNumber=0;
+        turnNumber=0;
     }
 
 //volver el boton al valor inicial
@@ -148,11 +156,13 @@ public class GameController {
         if(playerTurnNumber % 2==0){
             button.setText("X");
             playerTurnNumber=1;
+            turnNumber++;
             playerTurnText.setText("Playing: Player 2");
         }
         else {
             button.setText("O");
             playerTurnNumber=0;
+            turnNumber++;
             playerTurnText.setText("Playing: Player 1");
         }
     }
@@ -162,7 +172,6 @@ public class GameController {
         if (!gameEnded) {
             while (!posiblePintarCasilla) {
                 int resultadoComp = (int) Math.floor(Math.random() * 9);
-                System.out.println(resultadoComp);
                 switch (resultadoComp) {
                     case 0:
                         if (button1.isDisabled()) {
@@ -264,12 +273,14 @@ public class GameController {
             String resultado="X";
             compSetButton(resultado);
             playerTurnNumber=1;
+            turnNumber++;
             playerTurnText.setText("Playing: Player 2");
         }
         else {
             String resultado="O";
             compSetButton(resultado);
             playerTurnNumber=0;
+            turnNumber++;
             playerTurnText.setText("Playing: Player 1");
         }
     }
@@ -287,15 +298,12 @@ public class GameController {
                   setPlayerSymbol(button);
                   button.setDisable(true);
                   checkIfGameIsOver();
-                  turnNumber++;
                   playerTurnNumber=1;
                   playerTurnText.setText("Playing: Player 2");
                   compSetButton("O");
-                  turnNumber++;
                   playerTurnNumber=0;
                   playerTurnText.setText("Playing: Player 1");
               });
-
           }
 
 
@@ -332,17 +340,25 @@ public class GameController {
                 buttons.forEach(button -> {
                     button.setDisable(true);
                 });
+
                 return true;
 
 
             }
-        }
 
+
+        }
+        if (turnNumber==9 && !gameEnded) {
+            showTieDialog();
+            buttons.forEach(button -> {
+                button.setDisable(true);
+            });
+        }
 
         return false;
     }
 
-    
+
     //Cierra el juego
     @FXML
     protected void closeGame() {
