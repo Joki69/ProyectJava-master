@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectjava.AboutView">
    <children>
@@ -16,32 +12,6 @@
             <Label layoutX="281.0" layoutY="10.0" prefHeight="29.0" prefWidth="38.0" text="About " />
          </children>
       </Pane>
-      <MenuBar layoutX="4.0" layoutY="49.0" prefHeight="27.0" prefWidth="600.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Play" />
-                  <MenuItem mnemonicParsing="false" onAction="#closeGame" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Options">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Rename Players" />
-                  <MenuItem mnemonicParsing="false" text="Color Options" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Scores">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
       <Text layoutX="30.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You probably already know how to play Tic-Tac-Toe. It's a really simple game, right? That's what most people think. But if you really wrap your brain around it, you'll discover that Tic-Tac-Toe isn't quite as simple as you think!Tic-Tac -Toe (along with a lot of other games) involves looking ahead and trying to figure out what the person playing against you might do next. " wrappingWidth="540.13671875" />
       <Text layoutX="30.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RULES FOR TIC-TAC-TOE" />
       <Text layoutX="30.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. The game is played on a grid that's 3 squares by 3 squares." wrappingWidth="540.13671875" />

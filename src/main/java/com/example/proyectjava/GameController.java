@@ -16,31 +16,12 @@ import java.io.IOException;
 import java.util.*;
 
 public class GameController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
     private boolean gameEnded=false;
     private int turnNumber=0;
 
-    private String namePlayer1="Player 1";
 
-    private String namePlayer2="Player 2";
 
-    public String getNamePlayer1() {
-        return namePlayer1;
-    }
-
-    public void setNamePlayer1(String namePlayer1) {
-        this.namePlayer1 = namePlayer1;
-    }
-
-    public String getNamePlayer2() {
-        return namePlayer2;
-    }
-
-    public void setNamePlayer2(String namePlayer2) {
-        this.namePlayer2 = namePlayer2;
-    }
 
     @FXML
     private Label welcomeText;
@@ -98,11 +79,31 @@ public class GameController {
     private Button light;
 
     @FXML
-    protected void statisticsGameScene() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("stats.fxml"));
+    protected void scoresGameScene() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Scores.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage statsStage = new Stage();
-        statsStage.setTitle("Statistics of players");
+        statsStage.setTitle("Scores");
+        statsStage.setScene(scene);
+        statsStage.initModality(Modality.NONE);
+        statsStage.show();
+    }
+    @FXML
+    protected void playerName() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ReenamePlayersView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage statsStage = new Stage();
+        statsStage.setTitle("Choose a new name");
+        statsStage.setScene(scene);
+        statsStage.initModality(Modality.NONE);
+        statsStage.show();
+    }
+    @FXML
+    protected void aboutRules() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AboutView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage statsStage = new Stage();
+        statsStage.setTitle("RULES!");
         statsStage.setScene(scene);
         statsStage.initModality(Modality.NONE);
         statsStage.show();
@@ -311,6 +312,7 @@ public class GameController {
                   playerTurnNumber=1;
                   playerTurnText.setText("Playing: Player 2");
                   compSetButton("O");
+                  turnNumber++;
                   playerTurnNumber=0;
                   playerTurnText.setText("Playing: Player 1");
               });
