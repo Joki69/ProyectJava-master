@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -96,7 +97,16 @@ public class GameController {
     @FXML
     private Button light;
 
-
+    @FXML
+    protected void statisticsGameScene() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("stats.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage statsStage = new Stage();
+        statsStage.setTitle("Statistics of players");
+        statsStage.setScene(scene);
+        statsStage.initModality(Modality.NONE);
+        statsStage.show();
+    }
     ArrayList<Button> buttons;
 
     public void initialize(){
